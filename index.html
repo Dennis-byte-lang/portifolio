@@ -3,58 +3,360 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dennis Kamuri Nyambura | Software Engineer</title>
+    <meta name="description" content="Dennis Kamuri Nyambura is a software engineer building reliable web and mobile products with clean architecture and measurable impact.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Dennis</h1>
-        <nav>
-            <ul>
-                <li><a href="home">Home</a></li>
-                <li><a href="home">About me</a></li>
-                <li><a href="contact">contact</a></li>
-                <li><a href="projects">projects</a></li>
-                <li><a href="skills">skills</a></li>
+    <div class="intro-veil" id="intro-veil" aria-hidden="true">
+        <div class="intro-cassette">
+            <svg class="intro-ring" viewBox="0 0 200 200" aria-hidden="true">
+                <defs>
+                    <path id="circlePath" d="M100,20 a80,80 0 1,1 -0.1,0"></path>
+                </defs>
+                <text class="ring-text">
+                    <textPath id="intro-text" href="#circlePath" startOffset="0%"></textPath>
+                </text>
+            </svg>
+            <div class="intro-core"></div>
+        </div>
+    </div>
+    <div class="bg-decor" aria-hidden="true">
+        <span class="blob blob-1"></span>
+        <span class="blob blob-2"></span>
+        <span class="blob blob-3"></span>
+        <span class="ring ring-1"></span>
+        <span class="ring ring-2"></span>
+        <span class="ring ring-3"></span>
+    </div>
+    <div class="scroll-progress" aria-hidden="true">
+        <span class="scroll-bar" id="scroll-bar"></span>
+    </div>
+    <header class="site-header">
+        <a class="brand" href="#home">
+            <img src="./images/nyukiman.png" alt="Dennis Kamuri Nyambura" class="brand-avatar">
+            <span class="brand-name">Dennis Kamuri Nyambura</span>
+        </a>
+        <nav aria-label="Primary">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#case-study">Case Study</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark mode">
+            <span class="theme-icon" aria-hidden="true">🌙</span>
+            <span class="theme-text">Dark</span>
+        </button>
     </header>
-    <main>
-        <section class="hero">
-            <img scrc="./images/nyukiman.png" alt="profile image">
-            <h2>Dennis kamury</h2>
-            <p>am a software engineer</p>
-
+    <main id="home" class="app-slide">
+        <section class="hero section reveal">
+            <div class="parallax-text">
+                <span>Product</span>
+                <span>Engineering</span>
+                <span>Experience</span>
+            </div>
+            <div class="hero-content">
+                <p class="kicker">Software Engineer</p>
+                <h1>Building reliable products with clean architecture and measurable impact.</h1>
+                <p class="lead">I design and develop web and mobile experiences that prioritize performance, maintainability, and clear business outcomes.</p>
+                <div class="hero-highlights">
+                    <span class="pill">Open to freelance & full-time roles</span>
+                    <span class="pill">Based in Nairobi, working remotely</span>
+                </div>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#projects">View Projects</a>
+                    <a class="btn btn-outline" href="#contact">Start a Project</a>
+                </div>
+            </div>
+            <div class="hero-panel">
+                <div class="hero-photo-wrap">
+                    <img src="./images/nyukiman.png" alt="Portrait of Dennis Kamuri Nyambura" class="hero-photo">
+                </div>
+                <div class="hero-card">
+                    <h3>What I deliver</h3>
+                    <ul>
+                        <li>High-performance UI with clean design systems</li>
+                        <li>API integrations and scalable backend logic</li>
+                        <li>Clear documentation and handoff-ready code</li>
+                    </ul>
+                </div>
+            </div>
         </section>
-        <section id="aboutme">
-            <h2>About me</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, recusandae?</p>
+        <section class="client-banner section-full reveal">
+            <div class="section-inner banner-inner">
+                <div>
+                    <h2>Trusted Delivery for Ambitious Teams</h2>
+                    <p>Product-first engineering, fast iterations, and reliable launches. I help clients move from idea to production with clarity.</p>
+                </div>
+                <div class="banner-actions">
+                    <a class="btn btn-primary" href="#contact">Start a Project</a>
+                    <a class="btn btn-outline" href="#projects">View Projects</a>
+                </div>
+            </div>
         </section>
-        <section id="projects">
-            <h2>My Projects</h2>
-            <div class="projects">
-                <div class="projects-container">
-                    <div class="project-item">
-                        <img src="/images/nyukiman.png" alt="portifolio image".height="300" width="300">
-                        <h3>Portifolio project</h3>
-                        <P>This is a portifolio project created using html,css and javascript</P>
+        <section class="trusted section-full reveal">
+            <div class="section-inner">
+                <div class="section-head">
+                    <h2>Trusted By</h2>
+                    <p>Teams that value reliable delivery and clear communication.</p>
+                </div>
+                <div class="logo-strip">
+                    <span>UrbanMart</span>
+                    <span>PulsePay</span>
+                    <span>BrightLabs</span>
+                    <span>KenyaFresh</span>
+                    <span>NovaStack</span>
+                    <span>SwiftCart</span>
+                </div>
+            </div>
+        </section>
+        <section id="about" class="section section-full reveal">
+            <div class="section-inner">
+                <h2>About Me</h2>
+                <p>I am a software engineer who enjoys turning product requirements into dependable systems. My work spans frontend interfaces, backend APIs, and integrations that help teams ship faster without sacrificing code quality.</p>
+                <div class="stats-grid">
+                    <article class="stat-card">
+                        <h3>3+</h3>
+                        <p>Years of practical development experience</p>
+                    </article>
+                    <article class="stat-card">
+                        <h3>25+</h3>
+                        <p>Features, flows, and modules delivered</p>
+                    </article>
+                    <article class="stat-card">
+                        <h3>12+</h3>
+                        <p>Tools and frameworks used in production</p>
+                    </article>
+                </div>
+                <div class="impact-grid">
+                    <article class="card">
+                        <h3>Client Outcomes</h3>
+                        <p>Faster releases, clearer product metrics, and scalable systems tailored to business needs.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Design Clarity</h3>
+                        <p>Clean UI systems and documentation that make team handoffs frictionless.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Operational Readiness</h3>
+                        <p>Monitoring, analytics, and iteration loops that keep products healthy after launch.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section id="services" class="section section-full reveal">
+            <div class="section-inner">
+                <div class="section-head">
+                    <h2>Services</h2>
+                    <p>Focused delivery across the product lifecycle, from concept to production.</p>
+                </div>
+                <div class="service-grid masonry">
+                    <article class="card">
+                        <h3>Product Engineering</h3>
+                        <p>End-to-end development for web and mobile applications with robust architecture and clear documentation.</p>
+                    </article>
+                    <article class="card">
+                        <h3>UI Engineering</h3>
+                        <p>Design systems, responsive layouts, and accessible interfaces that feel polished and fast.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Backend & APIs</h3>
+                        <p>Scalable APIs, integrations, and data workflows that are secure and easy to maintain.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section id="projects" class="section section-full reveal">
+            <div class="section-inner">
+                <div class="section-head">
+                    <h2>Selected Projects</h2>
+                    <p>Real work focused on usability, speed, and measurable product impact.</p>
+                </div>
+                <div class="projects-container masonry" id="projects-container"></div>
+                <div class="section-actions">
+                    <button class="btn btn-outline" id="projects-toggle" type="button">Show More</button>
+                </div>
+            </div>
+        </section>
+        <section id="case-study" class="section section-full reveal">
+            <div class="section-head section-inner">
+                <h2>Featured Case Study</h2>
+                <p>A short walkthrough of how I deliver outcomes for teams.</p>
+            </div>
+            <div class="case-study case-full">
+                <div class="case-visual">
+                    <div class="case-hero-card">
+                        <h3>Hypermarket App Launch</h3>
+                        <p>Built and administered a mobile-first hypermarket app that went viral in Kenya, with inventory-aware listings, cart flows, and real-time order tracking.</p>
+                        <ul class="case-list">
+                            <li>Product discovery with category filters, search, and promos.</li>
+                            <li>Secure checkout, order tracking, and customer notifications.</li>
+                            <li>Admin tools for pricing, stock updates, and fulfillment.</li>
+                        </ul>
+                        <a class="btn btn-outline" href="#contact">Request Case Study</a>
                     </div>
-                    <div class="project-item">
-                        <img src="/images/nyukiman.png" alt="portifolio image".height="300" width="300">
-                        <h3>Portifolio project</h3>
-                        <P>This is a portifolio project created using html,css and javascript</P>
-                    </div>
-                    <div class="project-item">
-                        <img src="/images/nyukiman.png" alt="portifolio image".height="300" width="300">
-                        <h3>Portifolio project</h3>
-                        <P>This is a portifolio project created using html,css and javascript</P>
+                    <div class="metric-grid">
+                        <article class="metric-card">
+                            <h4>30%</h4>
+                            <p>Faster checkout flow</p>
+                        </article>
+                        <article class="metric-card">
+                            <h4>22%</h4>
+                            <p>Increase in repeat orders</p>
+                        </article>
+                        <article class="metric-card">
+                            <h4>8 weeks</h4>
+                            <p>End-to-end delivery</p>
+                        </article>
                     </div>
                 </div>
             </div>
         </section>
-        <section id="skills">
-            <h2>Skills</h2>
+        <section id="skills" class="section section-full reveal">
+            <div class="section-inner">
+                <h2>Core Skills</h2>
+                <ul class="skills-list" id="skills-list">
+                    <li>JavaScript (ES6+)</li>
+                    <li>HTML & CSS</li>
+                    <li>React</li>
+                    <li>Java</li>
+                    <li>Python</li>
+                    <li>Dart</li>
+                    <li>C++</li>
+                    <li>REST API Design</li>
+                    <li>PostgreSQL</li>
+                    <li>PHP</li>
+                    <li>Git & GitHub</li>
+                    <li>Testing and Debugging</li>
+                </ul>
+                <div class="tools-grid">
+                    <div class="tool-row">
+                        <span>Frameworks</span>
+                        <p>React, Flutter, Node.js, Express</p>
+                    </div>
+                    <div class="tool-row">
+                        <span>Tooling</span>
+                        <p>GitHub Actions, Docker, Postman, Figma</p>
+                    </div>
+                    <div class="tool-row">
+                        <span>Practices</span>
+                        <p>System design, API documentation, CI/CD, code reviews</p>
+                    </div>
+                </div>
+                <div class="section-actions">
+                    <button class="btn btn-outline" id="skills-toggle" type="button">Show More</button>
+                </div>
+            </div>
+        </section>
+        <section id="process" class="section section-full reveal">
+            <div class="section-inner">
+                <div class="section-head">
+                    <h2>Delivery Process</h2>
+                    <p>Clear milestones that keep stakeholders aligned and ensure stable releases.</p>
+                </div>
+                <div class="process-steps masonry">
+                    <article class="card">
+                        <h3>01. Discovery</h3>
+                        <p>Requirements, constraints, and success metrics are aligned before build starts.</p>
+                    </article>
+                    <article class="card">
+                        <h3>02. Build</h3>
+                        <p>Iterative development with visible progress and early feedback loops.</p>
+                    </article>
+                    <article class="card">
+                        <h3>03. Launch</h3>
+                        <p>QA, performance checks, and release readiness with deployment support.</p>
+                    </article>
+                    <article class="card">
+                        <h3>04. Support</h3>
+                        <p>Post-launch improvements, analytics, and continuous optimization.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section id="testimonials" class="section section-full reveal">
+            <div class="section-inner">
+                <div class="section-head">
+                    <h2>Testimonials</h2>
+                    <p>What clients and collaborators say about my work.</p>
+                </div>
+                <div class="testimonials-marquee">
+                    <div class="testimonials-track" id="testimonials-track" aria-live="off"></div>
+                </div>
+            </div>
+        </section>
+        <section id="experience" class="section section-full reveal">
+            <div class="section-inner">
+                <h2>Experience</h2>
+                <article class="timeline-item">
+                    <h3>Software Engineer</h3>
+                    <p class="timeline-meta">Freelance / Contract | 2023 - Present</p>
+                    <p>Developed responsive web applications, built backend endpoints, and improved user flows for customer-facing products.</p>
+                </article>
+                <article class="timeline-item">
+                    <h3>Junior Developer</h3>
+                    <p class="timeline-meta">Collaborative Projects | 2021 - 2023</p>
+                    <p>Contributed to UI components, bug fixes, and API integrations while following code review and version control best practices.</p>
+                </article>
+                <article class="timeline-item extra-item">
+                    <h3>Product Support Engineer</h3>
+                    <p class="timeline-meta">Part-time | 2020 - 2021</p>
+                    <p>Maintained customer-facing workflows, improved documentation, and triaged production issues with the engineering team.</p>
+                </article>
+                <article class="timeline-item extra-item">
+                    <h3>Open Source Contributor</h3>
+                    <p class="timeline-meta">Community | 2019 - Present</p>
+                    <p>Collaborated on tooling improvements, bug fixes, and documentation across community projects.</p>
+                </article>
+                <div class="section-actions">
+                    <button class="btn btn-outline" id="experience-toggle" type="button">Show More</button>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="section section-full reveal">
+            <div class="section-inner">
+                <h2>Contact</h2>
+                <p>If you are hiring or want to collaborate, send a message and I will respond quickly.</p>
+                <div class="contact-card">
+                    <div>
+                        <h3>Availability</h3>
+                        <p>Open for freelance, contract, and full-time roles in 2026.</p>
+                    </div>
+                    <div>
+                        <h3>Location</h3>
+                        <p>Nairobi, Kenya · Remote-friendly</p>
+                    </div>
+                    <div>
+                        <h3>Response Time</h3>
+                        <p>Typically within 24 hours.</p>
+                    </div>
+                </div>
+                <div class="contact-links">
+                    <a href="mailto:nyukimwenye@gmail.com">nyukimwenye@gmail.com</a>
+                    <a href="https://github.com/Dennis-byte-lang" target="_blank" rel="noopener noreferrer">GitHub: Dennis-byte-lang</a>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://wa.me/254716135136" target="_blank" rel="noopener noreferrer" class="contact-link whatsapp">
+                        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                            <path fill="currentColor" d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.48 0 .12 5.37.12 11.97c0 2.11.55 4.18 1.6 6L0 24l6.2-1.62a11.94 11.94 0 0 0 5.86 1.5h.01c6.58 0 11.95-5.37 11.95-11.97 0-3.2-1.25-6.2-3.5-8.43zm-8.46 18.37h-.01a9.9 9.9 0 0 1-5.04-1.39l-.36-.21-3.68.96.98-3.58-.24-.37a9.9 9.9 0 0 1-1.52-5.29C2.19 6.5 6.58 2.1 12.06 2.1c2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.98c0 5.47-4.4 9.87-9.89 9.87zm5.42-7.41c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.46-.88-.78-1.48-1.74-1.65-2.03-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.03-1.05 2.51s1.08 2.92 1.23 3.12c.15.2 2.1 3.21 5.1 4.5.71.31 1.27.5 1.7.65.71.23 1.35.2 1.85.12.56-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
+                        </svg>
+                        WhatsApp: 0716 135 136
+                    </a>
+                </div>
+            </div>
         </section>
     </main>
+    <footer class="site-footer">&copy; 2026 Dennis Kamuri Nyambura. All rights reserved.</footer>
+    <script src="script/script.js"></script>
 </body>
 </html>
