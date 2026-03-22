@@ -46,3 +46,14 @@ export interface TestimonialItem {
   avatar: string;
   quote: string;
 }
+
+export interface BlogPostItem {
+  _id?: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  coverImage: string;
+  content: string;
+  tags: string[];
+  publishedAt: string;
+}

@@ -1,5 +1,6 @@
 import { connectDb } from "@/lib/db";
-import { defaultExperiences, defaultProjects, defaultSkills, defaultTestimonials } from "@/lib/default-content";
+import { defaultBlogPosts, defaultExperiences, defaultProjects, defaultSkills, defaultTestimonials } from "@/lib/default-content";
+import { Blog } from "@/models/blog";
 import { Experience } from "@/models/experience";
 import { Project } from "@/models/project";
 import { Skill } from "@/models/skill";
@@ -42,5 +43,15 @@ export async function getTestimonials() {
     return docs.length ? docs : defaultTestimonials;
   } catch {
     return defaultTestimonials;
+  }
+}
+
+export async function getBlogPosts() {
+  try {
+    await connectDb();
+    const docs = await Blog.find().sort({ publishedAt: -1 }).lean();
+    return docs.length ? docs : defaultBlogPosts;
+  } catch {
+    return defaultBlogPosts;
   }
 }

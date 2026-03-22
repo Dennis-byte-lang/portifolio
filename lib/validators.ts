@@ -41,6 +41,16 @@ export const testimonialSchema = z.object({
   quote: z.string().min(10),
 });
 
+export const blogSchema = z.object({
+  title: z.string().min(3),
+  slug: z.string().min(3),
+  excerpt: z.string().min(10),
+  coverImage: z.string().url(),
+  content: z.string().min(40),
+  tags: z.array(z.string()).default([]),
+  publishedAt: z.string().min(8),
+});
+
 export const contactSchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),

@@ -2,7 +2,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { AdminDashboard } from "@/components/admin/admin-dashboard";
 import { authOptions } from "@/lib/auth";
-import { getExperiences, getProjects, getSkills, getTestimonials } from "@/lib/content";
+import { getBlogPosts, getExperiences, getProjects, getSkills, getTestimonials } from "@/lib/content";
 
 export default async function AdminPage() {
   const session = await getServerSession(authOptions);
@@ -11,11 +11,12 @@ export default async function AdminPage() {
     redirect("/admin/login?callbackUrl=/admin");
   }
 
-  const [projects, skills, experiences, testimonials] = await Promise.all([
+  const [projects, skills, experiences, testimonials, blogPosts] = await Promise.all([
     getProjects(),
     getSkills(),
     getExperiences(),
     getTestimonials(),
+    getBlogPosts(),
   ]);
 
   return (
@@ -26,6 +27,7 @@ export default async function AdminPage() {
           initialSkills={skills}
           initialExperiences={experiences}
           initialTestimonials={testimonials}
+          initialBlogPosts={blogPosts}
         />
       </div>
     </main>

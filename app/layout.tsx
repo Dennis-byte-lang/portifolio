@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { siteConfig } from "@/lib/constants";
+import { ChatAssistant } from "@/components/ui/chat-assistant";
 import { ThemeScript } from "@/components/ui/theme-script";
 
 export const metadata: Metadata = {
@@ -43,6 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         {children}
+        <ChatAssistant />
       </body>
     </html>
   );

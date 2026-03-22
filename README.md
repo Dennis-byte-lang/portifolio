@@ -17,12 +17,15 @@ Production-ready Next.js App Router portfolio with premium UI, admin CMS, contac
 - Dark-mode first premium visual system with light toggle
 - Responsive full-width app-like layout and smooth interactions
 - Hero, About, Skills, Projects, Experience timeline, Services, Testimonials, Contact, Footer
+- Blog section with dynamic post routes (`/blog`, `/blog/[slug]`)
+- Built-in portfolio AI assistant widget (`/api/chat`)
 - Project filtering and dedicated project detail pages
 - Admin dashboard with Add/Edit/Delete for:
   - Projects
   - Skills
   - Experience
   - Testimonials
+  - Blog posts
 - Contact form with:
   - Validation
   - Honeypot anti-spam

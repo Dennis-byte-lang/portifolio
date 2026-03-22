@@ -1,4 +1,4 @@
-import type { ExperienceItem, ProjectItem, SkillItem, TestimonialItem } from "@/types/content";
+import type { BlogPostItem, ExperienceItem, ProjectItem, SkillItem, TestimonialItem } from "@/types/content";
 
 export const defaultProjects: ProjectItem[] = [
   {
@@ -136,4 +136,27 @@ export const defaultTestimonials: TestimonialItem[] = [
     avatar: "https://i.pravatar.cc/120?img=24",
     quote: "The admin tooling and performance improvements made a real business difference for our team."
   }
+];
+
+export const defaultBlogPosts: BlogPostItem[] = [
+  {
+    title: "How I Scaled a Hypermarket App for Viral Growth",
+    slug: "scaling-hypermarket-app-viral-growth",
+    excerpt: "Architecture and product decisions behind scaling a fast-growing commerce app in Kenya.",
+    coverImage: "https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=1400&q=80",
+    content:
+      "This case study covers feature prioritization, inventory synchronization, and performance budgets used to scale a hypermarket application from early traction to large daily active usage.",
+    tags: ["Architecture", "Mobile", "Scale"],
+    publishedAt: "2026-03-01",
+  },
+  {
+    title: "Designing Premium UX Without Sacrificing Performance",
+    slug: "premium-ux-with-performance",
+    excerpt: "A practical workflow for blending animation, accessibility, and Lighthouse goals.",
+    coverImage: "https://images.unsplash.com/photo-1510751007277-36932aac9ebd?auto=format&fit=crop&w=1400&q=80",
+    content:
+      "Premium interfaces can stay fast when motion is intentional, assets are optimized, and rendering paths are audited continuously with clear performance budgets.",
+    tags: ["UX", "Performance", "Frontend"],
+    publishedAt: "2026-02-14",
+  },
 ];

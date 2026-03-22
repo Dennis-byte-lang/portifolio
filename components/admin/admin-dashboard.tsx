@@ -2,27 +2,30 @@
 
 import { signOut } from "next-auth/react";
 import { useMemo, useState } from "react";
-import type { ExperienceItem, ProjectItem, SkillItem, TestimonialItem } from "@/types/content";
+import type { BlogPostItem, ExperienceItem, ProjectItem, SkillItem, TestimonialItem } from "@/types/content";
 import { splitCsv } from "@/lib/utils";
 
-type TabKey = "projects" | "skills" | "experiences" | "testimonials";
+type TabKey = "projects" | "skills" | "experiences" | "testimonials" | "blog";
 
 export function AdminDashboard({
   initialProjects,
   initialSkills,
   initialExperiences,
   initialTestimonials,
+  initialBlogPosts,
 }: {
   initialProjects: ProjectItem[];
   initialSkills: SkillItem[];
   initialExperiences: ExperienceItem[];
   initialTestimonials: TestimonialItem[];
+  initialBlogPosts: BlogPostItem[];
 }) {
   const [tab, setTab] = useState<TabKey>("projects");
   const [projects, setProjects] = useState(initialProjects);
   const [skills, setSkills] = useState(initialSkills);
   const [experiences, setExperiences] = useState(initialExperiences);
   const [testimonials, setTestimonials] = useState(initialTestimonials);
+  const [blogPosts, setBlogPosts] = useState(initialBlogPosts);
 
   const tabs: Array<{ key: TabKey; label: string }> = useMemo(
     () => [
@@ -30,6 +33,7 @@ export function AdminDashboard({
       { key: "skills", label: "Skills" },
       { key: "experiences", label: "Experience" },
       { key: "testimonials", label: "Testimonials" },
+      { key: "blog", label: "Blog" },
     ],
     []
   );
@@ -43,6 +47,7 @@ export function AdminDashboard({
     if (resource === "skills") setSkills((items) => items.filter((item) => item._id !== id));
     if (resource === "experiences") setExperiences((items) => items.filter((item) => item._id !== id));
     if (resource === "testimonials") setTestimonials((items) => items.filter((item) => item._id !== id));
+    if (resource === "blog") setBlogPosts((items) => items.filter((item) => item._id !== id));
   }
 
   async function patchItem(resource: string, id: string, payload: unknown) {
@@ -53,7 +58,7 @@ export function AdminDashboard({
     });
 
     if (!res.ok) return null;
-    const json = (await res.json()) as { data: ProjectItem | SkillItem | ExperienceItem | TestimonialItem };
+    const json = (await res.json()) as { data: ProjectItem | SkillItem | ExperienceItem | TestimonialItem | BlogPostItem };
     return json.data;
   }
 
@@ -70,7 +75,7 @@ export function AdminDashboard({
       return null;
     }
 
-    const json = (await res.json()) as { data: ProjectItem | SkillItem | ExperienceItem | TestimonialItem };
+    const json = (await res.json()) as { data: ProjectItem | SkillItem | ExperienceItem | TestimonialItem | BlogPostItem };
     return json.data;
   }
 
@@ -159,6 +164,21 @@ export function AdminDashboard({
           onEdit={async (id, payload) => {
             const updated = await patchItem("testimonials", id, payload);
             if (updated) setTestimonials((prev) => prev.map((item) => (item._id === id ? (updated as TestimonialItem) : item)));
+          }}
+        />
+      )}
+
+      {tab === "blog" && (
+        <BlogPanel
+          items={blogPosts}
+          onCreate={async (payload) => {
+            const created = await createItem("blog", payload);
+            if (created) setBlogPosts((prev) => [created as BlogPostItem, ...prev]);
+          }}
+          onDelete={(id) => removeItem("blog", id)}
+          onEdit={async (id, payload) => {
+            const updated = await patchItem("blog", id, payload);
+            if (updated) setBlogPosts((prev) => prev.map((item) => (item._id === id ? (updated as BlogPostItem) : item)));
           }}
         />
       )}
@@ -471,6 +491,84 @@ function TestimonialsPanel({
                     const quote = prompt("New quote", item.quote);
                     if (!quote) return;
                     await onEdit(item._id, { quote });
+                  }}
+                >
+                  Edit
+                </button>
+                <button type="button" className="rounded-lg border px-3 py-1" onClick={() => onDelete(item._id)}>
+                  Delete
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
+      </Card>
+    </div>
+  );
+}
+
+function BlogPanel({
+  items,
+  onCreate,
+  onDelete,
+  onEdit,
+}: {
+  items: BlogPostItem[];
+  onCreate: (payload: BlogPostItem) => Promise<void>;
+  onDelete: (id?: string) => void;
+  onEdit: (id: string, payload: Partial<BlogPostItem>) => Promise<void>;
+}) {
+  return (
+    <div className="grid gap-5">
+      <Card>
+        <h2 className="text-xl font-semibold">Add Blog Post</h2>
+        <form
+          onSubmit={async (event) => {
+            event.preventDefault();
+            const form = new FormData(event.currentTarget);
+            await onCreate({
+              title: String(form.get("title") || ""),
+              slug: String(form.get("slug") || ""),
+              excerpt: String(form.get("excerpt") || ""),
+              coverImage: String(form.get("coverImage") || ""),
+              content: String(form.get("content") || ""),
+              tags: splitCsv(String(form.get("tags") || "")),
+              publishedAt: String(form.get("publishedAt") || ""),
+            });
+            event.currentTarget.reset();
+          }}
+          className="mt-4 grid gap-3 md:grid-cols-2"
+        >
+          <input required name="title" placeholder="Title" className="rounded-xl border bg-surface px-3 py-2" />
+          <input required name="slug" placeholder="Slug" className="rounded-xl border bg-surface px-3 py-2" />
+          <input required name="publishedAt" placeholder="Published date (YYYY-MM-DD)" className="rounded-xl border bg-surface px-3 py-2" />
+          <input required name="coverImage" placeholder="Cover image URL" className="rounded-xl border bg-surface px-3 py-2" />
+          <input required name="tags" placeholder="Tags (comma separated)" className="rounded-xl border bg-surface px-3 py-2 md:col-span-2" />
+          <textarea required rows={3} name="excerpt" placeholder="Excerpt" className="rounded-xl border bg-surface px-3 py-2 md:col-span-2" />
+          <textarea required rows={7} name="content" placeholder="Article content" className="rounded-xl border bg-surface px-3 py-2 md:col-span-2" />
+          <button type="submit" className="rounded-xl bg-brand px-4 py-2 font-medium text-white md:col-span-2">
+            Save Blog Post
+          </button>
+        </form>
+      </Card>
+
+      <Card>
+        <h2 className="text-xl font-semibold">Existing Blog Posts</h2>
+        <div className="mt-4 grid gap-3">
+          {items.map((item, index) => (
+            <article key={item._id || `${item.slug}-${index}`} className="rounded-2xl border p-4">
+              <p className="font-semibold">{item.title}</p>
+              <p className="text-sm text-muted">{item.publishedAt}</p>
+              <p className="mt-1 text-sm text-muted">{item.excerpt}</p>
+              <div className="mt-3 flex gap-2 text-sm">
+                <button
+                  type="button"
+                  className="rounded-lg border px-3 py-1"
+                  onClick={async () => {
+                    if (!item._id) return;
+                    const excerpt = prompt("New excerpt", item.excerpt);
+                    if (!excerpt) return;
+                    await onEdit(item._id, { excerpt });
                   }}
                 >
                   Edit

@@ -11,6 +11,7 @@ const navItems = [
   ["Projects", "#projects"],
   ["Experience", "#experience"],
   ["Skills", "#skills"],
+  ["Blog", "/blog"],
   ["Testimonials", "#testimonials"],
   ["Contact", "#contact"],
 ] as const;
@@ -27,11 +28,17 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden items-center gap-6 text-sm text-muted md:flex">
-          {navItems.map(([label, href]) => (
-            <a key={href} href={href} className="transition hover:text-text">
-              {label}
-            </a>
-          ))}
+          {navItems.map(([label, href]) =>
+            href.startsWith("/") ? (
+              <Link key={href} href={href} className="transition hover:text-text">
+                {label}
+              </Link>
+            ) : (
+              <a key={href} href={href} className="transition hover:text-text">
+                {label}
+              </a>
+            )
+          )}
         </nav>
 
         <div className="hidden md:block">
@@ -52,11 +59,17 @@ export function SiteHeader() {
         <div className="section-shell pb-5 md:hidden">
           <div className="glass rounded-2xl border p-4">
             <div className="grid gap-3 text-sm">
-              {navItems.map(([label, href]) => (
-                <a key={href} href={href} onClick={() => setOpen(false)}>
-                  {label}
-                </a>
-              ))}
+              {navItems.map(([label, href]) =>
+                href.startsWith("/") ? (
+                  <Link key={href} href={href} onClick={() => setOpen(false)}>
+                    {label}
+                  </Link>
+                ) : (
+                  <a key={href} href={href} onClick={() => setOpen(false)}>
+                    {label}
+                  </a>
+                )
+              )}
               <ThemeToggle />
             </div>
           </div>
