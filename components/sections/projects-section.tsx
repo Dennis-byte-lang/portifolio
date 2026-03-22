@@ -51,6 +51,7 @@ export function ProjectsSection({ projects }: { projects: ProjectItem[] }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.16 }}
             transition={{ duration: 0.45, delay: index * 0.05 }}
+            whileHover={{ y: -6, scale: 1.01 }}
             className="glass mb-6 break-inside-avoid rounded-3xl border p-4"
           >
             <div className="relative h-52 overflow-hidden rounded-2xl">
